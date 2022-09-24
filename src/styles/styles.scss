@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@import '../styles/colores.scss';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::ng-deep .mat-tab-label{
+  color: $cor-principal !important;
+}
+
+::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled),
+::ng-deep.mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+  opacity: 1;
+}
+
+::ng-deep .mat-tab-body-content {
+ padding-left: 4px;
+ padding-right: 4px;
+ overflow: hidden !important;
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: $cor-principal; /* or add it to the track */
+}

@@ -1,5 +1,5 @@
 @import "../../../../../../styles/colores.scss";
-
+@import "../../../../../../styles/styles.scss";
 .box-linha {
   display: flex;
   flex-direction: row;
@@ -35,7 +35,7 @@
       align-items: center;
       align-content: center;
       height: 150px;
-      width: 90%;
+      width: 100%;
       padding-left: 0.5rem;
       padding-right: 0.5rem;
       .gasto {

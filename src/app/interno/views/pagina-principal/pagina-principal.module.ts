@@ -4,6 +4,7 @@ import { ControleAnualComponent } from './components/controle-anual/controle-anu
 import { ControleMensalComponent } from './components/controle-mensal/controle-mensal.component';
 import { PaginaPrincipalComponent } from './containers/pagina-principal.component';
 import { PaginaPrincipalRoutingModule } from './pagina-principal-routing.module';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { PaginaPrincipalRoutingModule } from './pagina-principal-routing.module'
   ],
   imports: [
     PaginaPrincipalRoutingModule,
-    CommonModule
+    CommonModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: []
