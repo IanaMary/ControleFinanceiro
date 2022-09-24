@@ -1,0 +1,17 @@
+<div class="box-linha">
+  <div class="box-coluna" *ngFor="let cont of controleMensal;">
+    <div class="titulo">
+      {{cont.mes + '/' + cont.ano}}
+    </div>
+    <div class="informacoes">
+      <span class="gasto"> Total a Receber:
+        <span class="valor"> {{cont.totalReceber}}</span>
+      </span>
+      <span class="gasto"> Total a Pagar:
+        <span class="valor"> {{cont.totalReceber}}</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+
