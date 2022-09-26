@@ -7,22 +7,41 @@ import { PaginaPrincipalRoutingModule } from './pagina-principal-routing.module'
 import { MatTabsModule } from '@angular/material/tabs';
 import { ControleDiarioComponent } from './components/controle-diario/controle-diario.component';
 import { MatSelectModule } from '@angular/material/select'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon'
+import { MatDialogModule } from '@angular/material/dialog';
+import { NovoValorComponent } from './components/modals/novo-valor/novo-valor.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatInputModule } from '@angular/material/input';
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
     PaginaPrincipalComponent,
     ControleMensalComponent,
     ControleAnualComponent,
-    ControleDiarioComponent
+    ControleDiarioComponent,
+    NovoValorComponent
   ],
   imports: [
     PaginaPrincipalRoutingModule,
     CommonModule,
     MatTabsModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatInputModule,
+    CurrencyMaskModule,
+    MatRadioModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
+  entryComponents: [NovoValorComponent ],
   providers: [],
   bootstrap: []
 })

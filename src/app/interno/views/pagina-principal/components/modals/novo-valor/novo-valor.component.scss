@@ -1,0 +1,32 @@
+@import '../../../../../../../styles/colores.scss';
+@import '../../../../../../../styles/styles.scss';
+.box-linha {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  .box-coluna{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+  }
+  .box-botoes{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.titulo-principal {
+  color: $cor-principal;
+}
+
+:host ::ng-deep .mat-radio-button {
+  margin-bottom: 0.25rem;
+}
+
+

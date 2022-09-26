@@ -22,26 +22,51 @@
   <div class="box-coluna">
     <table>
       <tr>
-        <th> {{"CONTAS " + mesAtual}}</th>
-        <th> PAGAR</th>
-        <th> PAGO </th>
+        <th>
+          <div class="infos">
+            <span>
+              {{"CONTAS " + mesAtual}}
+            </span>
+            <button class="botoes">
+              <mat-icon (click)="openDialog()">add_circle_outline</mat-icon>
+            </button>
+          </div>
+        </th>
+        <th>
+          <div class="infos">
+            PAGAR
+          </div>
+        </th>
+        <th>
+          <div class="infos">
+            PAGO
+          </div>
+        </th>
       </tr>
-      <tr *ngFor="let p of contasEntrada">
+      <tr *ngFor="let p of contasSaida">
         <td> {{p.nome}}</td>
-        <td> {{(!p.pago) ?  (p.valor | number : '1.2-2') : (0 | number : '1.2-2') }}</td>
-        <td> {{(!p.pago) ? (p.valor | number : '1.2-2') : (0 | number : '1.2-2') }}</td>
+        <td> {{!p.pago ? (p.valor | number : '1.2-2') : (0 | number : '1.2-2') }}</td>
+        <td> {{p.pago ? (p.valor | number : '1.2-2') : (0 | number : '1.2-2') }}</td>
       </tr>
     </table>
   </div>
   <div class="box-coluna">
     <table>
       <tr>
-        <th> ENTRADA </th>
-        <th> VALOR </th>
+        <th>
+          <div class="infos">
+            ENTRADA
+          </div>
+        </th>
+        <th>
+          <div class="infos">
+            VALOR
+          </div>
+        </th>
       </tr>
-      <tr *ngFor="let p of contasSaida">
-        <td> {{p.nome}}</td>
-        <td> {{(p.valor | number : '1.2-2')  }}</td>
+      <tr *ngFor="let p of contasEntrada">
+        <td> {{p?.nome }}</td>
+        <td> {{(p?.valor | number : '1.2-2') }}</td>
       </tr>
     </table>
   </div>
@@ -51,10 +76,26 @@
   <div class="box-resumo">
     <table>
       <tr>
-        <th> TOTAL À PAGAR </th>
-        <th> TOTAL PAGO </th>
-        <th> TOTAL ENTRADA </th>
-        <th> TOTAL CAIXA </th>
+        <th>
+          <div class="infos">
+            TOTAL À PAGAR
+          </div>
+        </th>
+        <th>
+          <div class="infos">
+            TOTAL PAGO
+          </div>
+        </th>
+        <th>
+          <div class="infos">
+            TOTAL ENTRADA
+          </div>
+        </th>
+        <th>
+          <div class="infos">
+            TOTAL CAIXA
+          </div>
+        </th>
       </tr>
       <tr>
         <td> {{contasResumo.pagar | number : '1.2-2'}}</td>
@@ -65,7 +106,3 @@
     </table>
   </div>
 </div>
-
-
-
-

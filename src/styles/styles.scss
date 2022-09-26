@@ -1,9 +1,16 @@
 @import '../styles/colores.scss';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
 
-::ng-deep .mat-tab-label{
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+::ng-deep .mat-tab-label {
   color: $cor-principal !important;
 }
 
@@ -13,23 +20,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 ::ng-deep .mat-tab-body-content {
- padding-left: 4px;
- padding-right: 4px;
- overflow: hidden !important;
+  padding-left: 4px;
+  padding-right: 4px;
+  overflow: hidden !important;
 }
-
 
 ::-webkit-scrollbar {
   width: 5px;
   height: 8px;
-  background-color: $cor-principal; /* or add it to the track */
+  background-color: $cor-principal;
 }
-
-
-// .mat-form-field-appearance-outline .mat-form-field-outline {
-//   border: 1px solid $cor-principal;
-// }
-
 
 .mat-select-arrow,
 .mat-select-value,
@@ -41,22 +41,100 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ::placeholder {
   color: $cor-principal;
 }
+
 .mat-form-field-appearance-outline .mat-form-field-outline {
   color: $cor-principal;
 }
 
-
-
-.mat-select-panel .mat-optgroup-label, .mat-option {
+.mat-select-panel .mat-optgroup-label,
+.mat-option {
   color: $cor-principal;
   background: white;
   border: none;
 }
 
 .mat-option.mat-active,
-.mat-option:hover:not(.mat-option-disabled), .mat-option:focus:not(.mat-option-disabled),
+.mat-option:hover:not(.mat-option-disabled),
+.mat-option:focus:not(.mat-option-disabled),
 .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
   color: $cor-principal;
   background: $cor-secundaria;
   border: none;
+}
+
+.mat-dialog-container {
+  background: $branco;
+  padding: 8px !important;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick,
+.mat-form-field-appearance-outline .mat-form-field-outline,
+.mat-form-field-appearance-outline .mat-form-field-outline-thick,
+.mat-form-field.mat-form-field,
+.mat-form-field-appearance-outline .mat-form-field-outline,
+.mat-form-field-underline,
+::ng-deep .mat-form-field-ripple {
+  color: $cor-principal;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: $cor-principal;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: $cor-principal;
+}
+
+.mat-radio-outer-circle {
+  border-color: $cor-principal;
+}
+
+.mat-radio-label {
+  color: $cor-principal;
+}
+
+.mat-divider {
+  border-top-color: $cor-principal;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0;
+}
+
+.mat-form-field-wrapper {
+  padding: 0
+}
+
+.botao-cancelar {
+  background: $branco;
+  color: $cor-principal;
+  border: none;
+  height: 32px;
+  border: 1px solid $cor-principal;
+  margin: 0.25rem;
+}
+
+
+.botao-adicionar {
+  background: $cor-principal;
+  color: $branco;
+  border: none;
+  height: 32px;
+  margin: 0.25rem;
+  &:disabled{
+    background: $cor-secundaria-escuro;
+    color: $cor-principal-escuro;
+  }
+}
+
+
+.botao-fechar {
+  background-color: transparent;
+  border: none;
+  .mat-icon {
+    color: $cor-principal;
+  }
 }

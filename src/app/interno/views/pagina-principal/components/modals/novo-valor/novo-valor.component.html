@@ -1,0 +1,40 @@
+<div class="box-linha titulo-principal">
+  ADICIONAR VALOR
+  <button class="botao-fechar">
+    <mat-icon (click)="fechar(false)">cancel</mat-icon>
+  </button>
+</div>
+<mat-divider></mat-divider>
+<form [formGroup]="data?.novoValorForm" class="box-linha">
+  <div class="box-coluna">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input [(ngModel)]="data?.novoValorForm?.value.nome" formControlName="nome" matInput>
+    </mat-form-field>
+  </div>
+  <div class="box-coluna">
+    <mat-form-field appearance="outline">
+      <mat-label>Valor</mat-label>
+      <input [(ngModel)]="data?.novoValorForm?.value.valor" formControlName="valor" matInput currencyMask
+        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+    </mat-form-field>
+  </div>
+  <div class="box-coluna">
+    <mat-radio-group class="box-coluna" formControlName="tipo" [(ngModel)]="data?.novoValorForm?.value.tipo">
+      <mat-radio-button [value]="'receber'">Receber</mat-radio-button>
+      <mat-radio-button [value]="'pagar'">Pagar</mat-radio-button>
+      <mat-radio-button [value]="'pago'">Pago</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</form>
+<mat-divider></mat-divider>
+<div class="box-linha">
+  <div class="box-botoes">
+    <button (click)="fechar(false)" class="botao-cancelar">
+      CANCELAR
+    </button>
+    <button (click)="fechar(true)" [disabled]="data.novoValorForm.invalid" class="botao-adicionar">
+      ADICIONAR
+    </button>
+  </div>
+</div>

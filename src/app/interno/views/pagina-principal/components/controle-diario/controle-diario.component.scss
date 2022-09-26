@@ -37,6 +37,7 @@ td, th {
   text-align: left;
   padding: 8px;
 }
+
 tr:nth-child(even) {
   background-color: $cor-secundaria;
 }
@@ -52,4 +53,18 @@ tr:nth-child(even) {
   }
 }
 
+.infos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 2rem;
+}
 
+
+.botoes {
+  background-color: transparent;
+  border: none;
+  .mat-icon {
+    color: $adicionar;
+  }
+}
