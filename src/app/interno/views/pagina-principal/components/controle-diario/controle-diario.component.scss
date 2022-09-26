@@ -1,0 +1,55 @@
+@import "../../../../../../styles/colores.scss";
+@import "../../../../../../styles/styles.scss";
+.box-linha {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 1rem;
+  .box-filtro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    // width: 25%;
+    margin-right: 0.25rem;
+  }
+  .box-coluna {
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+  }
+  .box-resumo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+td, th {
+  color: $cor-principal;
+  border: 1px solid $cor-principal;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: $cor-secundaria;
+}
+
+@media screen and (max-width: 600px) {
+  .box-linha {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .box-coluna {
+      width: 100%;
+    }
+  }
+}
+
+

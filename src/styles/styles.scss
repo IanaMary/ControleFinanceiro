@@ -24,3 +24,39 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 8px;
   background-color: $cor-principal; /* or add it to the track */
 }
+
+
+// .mat-form-field-appearance-outline .mat-form-field-outline {
+//   border: 1px solid $cor-principal;
+// }
+
+
+.mat-select-arrow,
+.mat-select-value,
+.mat-form-field-outline,
+.mat-form-field-empty.mat-form-field-label,
+.mat-form-field-label,
+.mat-form-field-underline,
+.mat-input-element,
+::placeholder {
+  color: $cor-principal;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: $cor-principal;
+}
+
+
+
+.mat-select-panel .mat-optgroup-label, .mat-option {
+  color: $cor-principal;
+  background: white;
+  border: none;
+}
+
+.mat-option.mat-active,
+.mat-option:hover:not(.mat-option-disabled), .mat-option:focus:not(.mat-option-disabled),
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  color: $cor-principal;
+  background: $cor-secundaria;
+  border: none;
+}

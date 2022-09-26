@@ -1,0 +1,71 @@
+<div class="box-linha">
+  <div class="box-filtro">
+    <mat-form-field appearance="outline">
+      <mat-label>Escolha o mês</mat-label>
+      <mat-select [(ngModel)]="mesAtual">
+        <mat-option [value]="mes" *ngFor="let mes of meses">{{mes}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="box-filtro">
+    <mat-form-field appearance="outline">
+      <mat-label>Escolha o ano</mat-label>
+      <mat-select [(ngModel)]="anoAtual">
+        <mat-option [value]="ano" *ngFor="let ano of anos">{{ano}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+
+<div class="box-linha">
+  <div class="box-coluna">
+    <table>
+      <tr>
+        <th> {{"CONTAS " + mesAtual}}</th>
+        <th> PAGAR</th>
+        <th> PAGO </th>
+      </tr>
+      <tr *ngFor="let p of contasEntrada">
+        <td> {{p.nome}}</td>
+        <td> {{(!p.pago) ?  (p.valor | number : '1.2-2') : (0 | number : '1.2-2') }}</td>
+        <td> {{(!p.pago) ? (p.valor | number : '1.2-2') : (0 | number : '1.2-2') }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="box-coluna">
+    <table>
+      <tr>
+        <th> ENTRADA </th>
+        <th> VALOR </th>
+      </tr>
+      <tr *ngFor="let p of contasSaida">
+        <td> {{p.nome}}</td>
+        <td> {{(p.valor | number : '1.2-2')  }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="box-linha">
+  <div class="box-resumo">
+    <table>
+      <tr>
+        <th> TOTAL À PAGAR </th>
+        <th> TOTAL PAGO </th>
+        <th> TOTAL ENTRADA </th>
+        <th> TOTAL CAIXA </th>
+      </tr>
+      <tr>
+        <td> {{contasResumo.pagar | number : '1.2-2'}}</td>
+        <td> {{contasResumo.pago | number : '1.2-2'}}</td>
+        <td> {{contasResumo.entrada | number : '1.2-2'}}</td>
+        <td> {{contasResumo.caixa | number : '1.2-2'}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+
