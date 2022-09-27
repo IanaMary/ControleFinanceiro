@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalGenericoComponent } from '../modals/modal-generico/modal-generico.component';
+import { ModalGenericoComponent } from '../../../../../shared/components/modals/modal-generico/modal-generico.component';
 import { NovoValorComponent } from '../modals/novo-valor/novo-valor.component';
 
 @Component({

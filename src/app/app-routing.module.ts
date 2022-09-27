@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./interno/interno.module').then(mod => mod.InternoModule)
   },
   {
+    path: 'autenticacao',
+    loadChildren: () => import('./externo/externo.module').then(mod => mod.ExternoModule)
+  },
+  {
     path: '**',
     redirectTo: ''
   }

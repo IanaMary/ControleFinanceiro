@@ -1,22 +1,12 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ControleAnualComponent } from './components/controle-anual/controle-anual.component';
 import { ControleMensalComponent } from './components/controle-mensal/controle-mensal.component';
 import { PaginaPrincipalComponent } from './containers/pagina-principal.component';
 import { PaginaPrincipalRoutingModule } from './pagina-principal-routing.module';
-import { MatTabsModule } from '@angular/material/tabs';
 import { ControleDiarioComponent } from './components/controle-diario/controle-diario.component';
-import { MatSelectModule } from '@angular/material/select'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon'
-import { MatDialogModule } from '@angular/material/dialog';
 import { NovoValorComponent } from './components/modals/novo-valor/novo-valor.component';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatInputModule } from '@angular/material/input';
-import { CurrencyMaskModule } from "ng2-currency-mask";
-import { MatRadioModule } from '@angular/material/radio';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { ModalGenericoComponent } from './components/modals/modal-generico/modal-generico.component';
+import { ModalGenericoComponent } from '../../../shared/components/modals/modal-generico/modal-generico.component';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 @NgModule({
@@ -30,18 +20,7 @@ import { ModalGenericoComponent } from './components/modals/modal-generico/modal
   ],
   imports: [
     PaginaPrincipalRoutingModule,
-    CommonModule,
-    MatTabsModule,
-    MatSelectModule,
-    FormsModule,
-    MatIconModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatInputModule,
-    CurrencyMaskModule,
-    MatRadioModule,
-    MatFormFieldModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   entryComponents: [NovoValorComponent, ModalGenericoComponent],
   providers: [],
