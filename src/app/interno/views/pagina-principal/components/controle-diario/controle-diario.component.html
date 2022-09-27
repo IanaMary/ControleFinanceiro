@@ -27,8 +27,8 @@
             <span>
               {{"CONTAS " + mesAtual}}
             </span>
-            <button class="botoes">
-              <mat-icon (click)="openDialog()">add_circle_outline</mat-icon>
+            <button class="botao-icone">
+              <mat-icon (click)="adicionarNovoValor(false)">add_circle_outline</mat-icon>
             </button>
           </div>
         </th>
@@ -44,7 +44,22 @@
         </th>
       </tr>
       <tr *ngFor="let p of contasSaida">
-        <td> {{p.nome}}</td>
+        <td>
+          <div class="infos">
+            <span>
+              {{p.nome}}
+            </span>
+            <div class="botoes">
+              <button class="botao-icone">
+                <mat-icon (click)="editarValor(false, p)">edit</mat-icon>
+              </button>
+              <button class="botao-icone">
+                <mat-icon (click)="excluirValor(false, p)">delete</mat-icon>
+              </button>
+            </div>
+
+          </div>
+        </td>
         <td> {{!p.pago ? (p.valor | number : '1.2-2') : (0 | number : '1.2-2') }}</td>
         <td> {{p.pago ? (p.valor | number : '1.2-2') : (0 | number : '1.2-2') }}</td>
       </tr>
@@ -55,7 +70,12 @@
       <tr>
         <th>
           <div class="infos">
-            ENTRADA
+            <span>
+              ENTRADA
+            </span>
+            <button class="botao-icone">
+              <mat-icon (click)="adicionarNovoValor(true)">add_circle_outline</mat-icon>
+            </button>
           </div>
         </th>
         <th>
@@ -65,7 +85,21 @@
         </th>
       </tr>
       <tr *ngFor="let p of contasEntrada">
-        <td> {{p?.nome }}</td>
+        <td>
+          <div class="infos">
+            <span>
+              {{p.nome}}
+            </span>
+            <div class="botoes">
+              <button class="botao-icone">
+                <mat-icon (click)="editarValor(true, p)">edit</mat-icon>
+              </button>
+              <button class="botao-icone">
+                <mat-icon (click)="excluirValor(true, p)">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </td>
         <td> {{(p?.valor | number : '1.2-2') }}</td>
       </tr>
     </table>

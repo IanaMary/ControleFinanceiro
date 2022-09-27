@@ -1,11 +1,12 @@
-<div class="box-linha titulo-principal">
-  ADICIONAR VALOR
-  <button class="botao-fechar">
+<div class="box-linha titulo-principal-modal">
+  {{data.editar ? 'EDITAR VALOR' : 'ADICIONAR VALOR'}}
+  <button  class="botao-icone">
     <mat-icon (click)="fechar(false)">cancel</mat-icon>
   </button>
 </div>
 <mat-divider></mat-divider>
-<form [formGroup]="data?.novoValorForm" class="box-linha">
+<form [formGroup]="data?.novoValorForm" class="box-linha"
+  [ngStyle]="{'justify-content': data.tipo ? 'flex-start' : 'space-between' }">
   <div class="box-coluna">
     <mat-form-field appearance="outline">
       <mat-label>Nome</mat-label>
@@ -19,22 +20,21 @@
         [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
     </mat-form-field>
   </div>
-  <div class="box-coluna">
-    <mat-radio-group class="box-coluna" formControlName="tipo" [(ngModel)]="data?.novoValorForm?.value.tipo">
-      <mat-radio-button [value]="'receber'">Receber</mat-radio-button>
-      <mat-radio-button [value]="'pagar'">Pagar</mat-radio-button>
-      <mat-radio-button [value]="'pago'">Pago</mat-radio-button>
+  <div class="box-coluna" *ngIf="!data.tipo">
+    <mat-radio-group class="box-coluna" formControlName="pago" [(ngModel)]="data?.novoValorForm?.value.pago">
+      <mat-radio-button [value]="true">Pago</mat-radio-button>
+      <mat-radio-button [value]='false'>Pagar</mat-radio-button>
     </mat-radio-group>
   </div>
 </form>
 <mat-divider></mat-divider>
 <div class="box-linha">
   <div class="box-botoes">
-    <button (click)="fechar(false)" class="botao-cancelar">
+    <button (click)="fechar(false)"  class="botao-sencudario">
       CANCELAR
     </button>
-    <button (click)="fechar(true)" [disabled]="data.novoValorForm.invalid" class="botao-adicionar">
-      ADICIONAR
+    <button (click)="fechar(true)" [disabled]="data.novoValorForm.invalid" class="botao-principal">
+      {{data.editar ? 'EDITAR' : 'ADICIONAR'}}
     </button>
   </div>
 </div>

@@ -57,6 +57,7 @@ tr:nth-child(even) {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   height: 2rem;
 }
 
@@ -65,6 +66,6 @@ tr:nth-child(even) {
   background-color: transparent;
   border: none;
   .mat-icon {
-    color: $adicionar;
+    color: $cor-principal;
   }
 }

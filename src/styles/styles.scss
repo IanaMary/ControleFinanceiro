@@ -108,7 +108,21 @@ body {
   padding: 0
 }
 
-.botao-cancelar {
+
+.titulo-principal-modal {
+  color: $cor-principal;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.titulo-secundario-modal {
+  color: $cor-principal;
+  font-weight: normal;
+  min-height: 3rem;
+}
+
+
+.botao-sencudario {
   background: $branco;
   color: $cor-principal;
   border: none;
@@ -118,7 +132,7 @@ body {
 }
 
 
-.botao-adicionar {
+.botao-principal {
   background: $cor-principal;
   color: $branco;
   border: none;
@@ -131,7 +145,7 @@ body {
 }
 
 
-.botao-fechar {
+.botao-icone {
   background-color: transparent;
   border: none;
   .mat-icon {

@@ -1,0 +1,21 @@
+<div class="box-linha titulo-principal-modal">
+  {{data?.titulo}}
+  <button class="botao-icone">
+    <mat-icon (click)="fechar(false)">cancel</mat-icon>
+  </button>
+</div>
+<mat-divider></mat-divider>
+<div class="box-linha titulo-secundario-modal">
+  {{data.texto}}
+</div>
+<mat-divider></mat-divider>
+<div class="box-linha">
+  <div class="box-botoes">
+    <button (click)="fechar(false)" class="botao-sencudario">
+      CANCELAR
+    </button>
+    <button (click)="fechar(true)" class="botao-principal">
+      {{data.botao}}
+    </button>
+  </div>
+</div>

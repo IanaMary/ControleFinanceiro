@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ModalGenericoComponent } from './components/modals/modal-generico/modal-generico.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ControleMensalComponent,
     ControleAnualComponent,
     ControleDiarioComponent,
-    NovoValorComponent
+    NovoValorComponent,
+    ModalGenericoComponent
   ],
   imports: [
     PaginaPrincipalRoutingModule,
@@ -41,7 +43,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     ReactiveFormsModule
   ],
-  entryComponents: [NovoValorComponent ],
+  entryComponents: [NovoValorComponent, ModalGenericoComponent],
   providers: [],
   bootstrap: []
 })
