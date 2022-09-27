@@ -1,0 +1,34 @@
+@import '../../../../../../styles/colores.scss';
+@import '../../../../../../styles/styles.scss';
+
+.box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 300px;
+  height: 300px;
+  background-color: $branco;
+  border: 1px solid $cor-principal;
+  border-radius: 5px;
+}
+
+.box-linha {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  .campos {
+    width: 80%;
+  }
+}
+
+
+
+

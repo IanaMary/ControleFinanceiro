@@ -24,7 +24,7 @@ export class LoginComponent  {
         Validators.required,
         Validators.email
       ]],
-      password: [null, [
+      senha: [null, [
         Validators.required,
         Validators.minLength(6)
       ]]

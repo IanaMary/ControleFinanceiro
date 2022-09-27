@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RouterGuardService } from '../services/router-guard/router-guard.service';
 import { InternoComponent } from './interno.component';
 
 const routes: Routes = [
@@ -9,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'pagina-principal',
-        canLoad: [],
+        canLoad: [RouterGuardService],
         loadChildren: () => import('./views/pagina-principal/pagina-principal.module').then(mod => mod.PaginaPrincipalModule),
         data: {
           breadcrumb: null

@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./interno/interno.module').then(mod => mod.InternoModule)
-  },
+
   {
     path: 'autenticacao',
     loadChildren: () => import('./externo/externo.module').then(mod => mod.ExternoModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./interno/interno.module').then(mod => mod.InternoModule)
   },
   {
     path: '**',
