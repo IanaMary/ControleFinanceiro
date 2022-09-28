@@ -1,23 +1,21 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
-
-  // Endpoints
+  url = environment.apiUrl;
   private readonly endpointAuth: string = 'auth';
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  // login(email, password) {
-  //   const auth = btoa(`${email}:${password}`);
-  //   // return this.httpService.genericPost(this.endpointAuth, null, {Authorization: 'Basic ' + auth}).pipe(
-  //   //   map(res => {
-  //   //     return res;
-  //   // }));
-  // }
-
+  login(email: string, password: string) {
+    const auth = btoa(`${email}:${password}`);
+    const httpOptions = {
+      headers: new HttpHeaders({Authorization: 'Basic ' + auth})
+    };
+    return this.http.post(`${this.url}${this.endpointAuth}`, {email: email, password: password}, httpOptions);
+  }
 }

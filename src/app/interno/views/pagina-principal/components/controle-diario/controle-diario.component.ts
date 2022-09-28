@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalGenericoComponent } from '../../../../../shared/components/modals/modal-generico/modal-generico.component';
+import { PaginaPrincipalService } from '../../services/pagina-principal.service';
 import { NovoValorComponent } from '../modals/novo-valor/novo-valor.component';
 
 @Component({
@@ -40,28 +41,9 @@ export class ControleDiarioComponent implements OnInit {
     },
   ];
 
-  contasSaida: any = [
-    {
-      valor: 10,
-      nome: 'teste1',
-      pago: true,
-      id: 1,
-    },
-    {
-      valor: 10,
-      nome: 'teste2',
-      pago: false,
-      id: 2,
-    },
-  ];
+  contasSaida: any = [];
 
-  contasEntrada: any = [
-    {
-      valor: 10,
-      nome: 'teste3',
-      id: 1,
-    },
-  ];
+  contasEntrada: any = [];
 
   contasResumo = {
     pagar: 0,
@@ -74,7 +56,8 @@ export class ControleDiarioComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private readonly paginaPrincipalService: PaginaPrincipalService
   ) {
     this.novoValorForm = this.formBuilder.group({
       nome: [null, [Validators.required]],
@@ -83,7 +66,10 @@ export class ControleDiarioComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.atualizarContasEntradas();
+    this.atualizarContasSaidas();
+  }
 
   adicionarNovoValor(bool: boolean): void {
     const dialogRef = this.dialog.open(NovoValorComponent, {
@@ -93,26 +79,32 @@ export class ControleDiarioComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result.fechar) {
         if (bool) {
-          let obj = {
+          const obj = {
             valor: result.data.valor,
             nome: result.data.nome,
           };
-          this.contasEntrada.push(obj);
-          this.contasResumo.entrada =
-            this.contasResumo.entrada + result.data.valor;
+          this.paginaPrincipalService.salvarContaEntrada(obj).subscribe(
+            (res: any) => {
+              this.atualizarContasEntradas();
+            },
+            (error: any) => {
+              console.log('erro => ', error);
+            }
+          );
         } else {
           let obj = {
             valor: result.data.valor,
             nome: result.data.nome,
             pago: result.data.pago,
           };
-          if (result.data.pago) {
-            this.contasResumo.pago = this.contasResumo.pago + result.data.valor;
-          } else {
-            this.contasResumo.pagar =
-              this.contasResumo.pagar + result.data.valor;
-          }
-          this.contasSaida.push(obj);
+          this.paginaPrincipalService.salvarContaSaida(obj).subscribe(
+            (res: any) => {
+              this.atualizarContasEntradas();
+            },
+            (error: any) => {
+              console.log('erro => ', error);
+            }
+          );
         }
         this.contasResumo.caixa =
           this.contasResumo.entrada -
@@ -275,5 +267,27 @@ export class ControleDiarioComponent implements OnInit {
       this.novoValorForm.get('valor')?.setValue(0);
       this.novoValorForm.get('tipo')?.setValue(true);
     });
+  }
+
+  atualizarContasEntradas() {
+    this.paginaPrincipalService.listarContaEntrada(1, 10).subscribe(
+      (res: any) => {
+        this.contasEntrada = res.rows;
+      },
+      (error: any) => {
+        console.log('erro => ', error);
+      }
+    );
+  }
+
+  atualizarContasSaidas() {
+    this.paginaPrincipalService.listarContaSaida(1, 10).subscribe(
+      (res: any) => {
+        this.contasSaida = res.rows;
+      },
+      (error: any) => {
+        console.log('erro => ', error);
+      }
+    );
   }
 }
