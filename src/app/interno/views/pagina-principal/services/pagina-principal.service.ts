@@ -30,19 +30,19 @@ export class PaginaPrincipalService {
     return this.http.post(`${this.url}${this.endpointContasSaidas}`, data);
   }
 
-  listarContaEntrada(page: number, limit: number) {
+  listarContaEntrada(page: number, limit: number, mes: string, ano: number) {
     const httpOptions = {
       headers: this.headers,
     };
-    return this.http.get(`${this.url}${this.endpointContasEntradas}?page=${page}&limit${limit}`);
+    return this.http.get(`${this.url}${this.endpointContasEntradas}?page=${page}&limit=${limit}&mes=${mes}&ano=${ano}`);
   }
 
 
-  listarContaSaida(page: number, limit: number) {
+  listarContaSaida(page: number, limit: number, mes: string, ano: number) {
     const httpOptions = {
       headers: this.headers,
     };
-    return this.http.get(`${this.url}${this.endpointContasSaidas}?page=${page}&limit${limit}`);
+    return this.http.get(`${this.url}${this.endpointContasSaidas}?page=${page}&limit=${limit}&mes=${mes}&ano=${ano}`);
   }
 
   // public listarSmuladoresPaginado(page, limit) {

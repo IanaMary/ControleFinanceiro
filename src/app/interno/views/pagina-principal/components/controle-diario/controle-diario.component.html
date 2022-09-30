@@ -2,7 +2,7 @@
   <div class="box-filtro">
     <mat-form-field appearance="outline">
       <mat-label>Escolha o mês</mat-label>
-      <mat-select [(ngModel)]="mesAtual">
+      <mat-select [(ngModel)]="mesAtual" (selectionChange)="atualizar()">
         <mat-option [value]="mes" *ngFor="let mes of meses">{{mes}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -10,7 +10,7 @@
   <div class="box-filtro">
     <mat-form-field appearance="outline">
       <mat-label>Escolha o ano</mat-label>
-      <mat-select [(ngModel)]="anoAtual">
+      <mat-select [(ngModel)]="anoAtual" (selectionChange)="atualizar()">
         <mat-option [value]="ano" *ngFor="let ano of anos">{{ano}}</mat-option>
       </mat-select>
     </mat-form-field>

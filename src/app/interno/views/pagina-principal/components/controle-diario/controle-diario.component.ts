@@ -30,16 +30,6 @@ export class ControleDiarioComponent implements OnInit {
   anos = Array(10)
     .fill(0)
     .map((e, i) => this.anoAtual + i);
-  controleMensal = [
-    {
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 1000,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-  ];
 
   contasSaida: any = [];
 
@@ -270,7 +260,7 @@ export class ControleDiarioComponent implements OnInit {
   }
 
   atualizarContasEntradas() {
-    this.paginaPrincipalService.listarContaEntrada(1, 10).subscribe(
+    this.paginaPrincipalService.listarContaEntrada(1, 10, this.mesAtual, this.anoAtual).subscribe(
       (res: any) => {
         this.contasEntrada = res.rows;
       },
@@ -281,7 +271,7 @@ export class ControleDiarioComponent implements OnInit {
   }
 
   atualizarContasSaidas() {
-    this.paginaPrincipalService.listarContaSaida(1, 10).subscribe(
+    this.paginaPrincipalService.listarContaSaida(1, 10, this.mesAtual, this.anoAtual).subscribe(
       (res: any) => {
         this.contasSaida = res.rows;
       },
@@ -289,5 +279,11 @@ export class ControleDiarioComponent implements OnInit {
         console.log('erro => ', error);
       }
     );
+  }
+
+
+  atualizar() {
+    this.atualizarContasSaidas();
+    this.atualizarContasEntradas();
   }
 }
