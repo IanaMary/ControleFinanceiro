@@ -89,7 +89,7 @@ export class ControleDiarioComponent implements OnInit {
             }
           );
         } else {
-          let obj = {
+          const obj = {
             valor: result.data.valor,
             nome: result.data.nome,
             pago: result.data.pago,
@@ -105,9 +105,6 @@ export class ControleDiarioComponent implements OnInit {
             }
           );
         }
-        this.contasResumo.caixa =
-          this.contasResumo.entrada -
-          (this.contasResumo.pagar + this.contasResumo.pago);
       }
 
       this.novoValorForm.reset();
@@ -129,66 +126,38 @@ export class ControleDiarioComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result.fechar) {
         if (bool) {
-          const pos = this.contasEntrada.findIndex((c: any) => {
-            return c.id === conta.id;
-          });
-
-          if (pos != -1) {
-            this.contasEntrada[pos].valor = result.data.valor;
-            this.contasEntrada[pos].nome = result.data.nome;
-
-            const total = this.contasEntrada.reduce(function (
-              total: number,
-              el: { valor: number }
-            ) {
-              return el.valor + total;
+          const obj = {
+            valor: result.data.valor,
+            nome: result.data.nome,
+            ano: this.anoAtual,
+            mes: this.mesAtual
+          };
+          this.paginaPrincipalService.editarContaEntrada(conta.id, obj).subscribe(
+            (res: any) => {
+              this.atualizarContasEntradas();
             },
-            0);
-
-            this.contasResumo.entrada = total;
-          }
-        } else {
-          const pos = this.contasSaida.findIndex((c: any) => {
-            return c.id === conta.id;
-          });
-
-          if (pos != -1) {
-            this.contasSaida[pos].valor = result.data.valor;
-            this.contasSaida[pos].nome = result.data.nome;
-            this.contasSaida[pos].pago = result.data.pago;
-
-            if (result.data.pago) {
-              const total = this.contasEntrada.reduce(function (
-                total: number,
-                el: any
-              ) {
-                if (el.pago) {
-                  return el.valor + total;
-                }
-                return total;
-              },
-              0);
-              this.contasResumo.pago = total;
-            } else {
-              const total = this.contasEntrada.reduce(function (
-                total: number,
-                el: any
-              ) {
-                if (!el.pago) {
-                  return el.valor + total;
-                }
-                return total;
-              },
-              0);
-              this.contasResumo.pagar = total;
+            (error: any) => {
+              console.log('erro => ', error);
             }
-          }
+          );
+        } else {
+          const obj = {
+            valor: result.data.valor,
+            nome: result.data.nome,
+            pago: result.data.pago,
+            ano: this.anoAtual,
+            mes: this.mesAtual
+          };
+          this.paginaPrincipalService.editarContaSaida(conta.id, obj).subscribe(
+            (res: any) => {
+              this.atualizarContasSaidas();
+            },
+            (error: any) => {
+              console.log('erro => ', error);
+            }
+          );
         }
-        this.contasResumo.caixa =
-          this.contasResumo.entrada -
-          (this.contasResumo.pagar + this.contasResumo.pago);
       }
-
       this.novoValorForm.reset();
       this.novoValorForm.get('valor')?.setValue(0);
       this.novoValorForm.get('pago')?.setValue(true);
@@ -207,64 +176,25 @@ export class ControleDiarioComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (bool) {
-          const pos = this.contasEntrada.findIndex((c: any) => {
-            return c.id === conta.id;
-          });
-          if (pos != -1) {
-            this.contasEntrada.splice(pos, 1);
-            const total = this.contasEntrada.reduce(function (
-              total: number,
-              el: { valor: number }
-            ) {
-              return el.valor + total;
+          this.paginaPrincipalService.excluirEntrada(conta.id).subscribe(
+            (res: any) => {
+              this.atualizarContasEntradas();
             },
-            0);
-
-            this.contasResumo.entrada = total;
-          }
-        } else {
-          const pos = this.contasSaida.findIndex((c: any) => {
-            return c.id === conta.id;
-          });
-
-          if (pos != -1) {
-            this.contasSaida.splice(pos, 1);
-
-            if (conta.pago) {
-              const total = this.contasEntrada.reduce(function (
-                total: number,
-                el: any
-              ) {
-                if (el.pago) {
-                  return el.valor + total;
-                }
-                return total;
-              },
-              0);
-              this.contasResumo.pago = total;
-            } else {
-              const total = this.contasEntrada.reduce(function (
-                total: number,
-                el: any
-              ) {
-                if (!el.pago) {
-                  return el.valor + total;
-                }
-                return total;
-              },
-              0);
-              this.contasResumo.pagar = total;
+            (error: any) => {
+              console.log('erro => ', error);
             }
-          }
+          );
+        } else {
+          this.paginaPrincipalService.excluirSaida(conta.id).subscribe(
+            (res: any) => {
+              this.atualizarContasSaidas();
+            },
+            (error: any) => {
+              console.log('erro => ', error);
+            }
+          );
         }
-        this.contasResumo.caixa =
-          this.contasResumo.entrada -
-          (this.contasResumo.pagar + this.contasResumo.pago);
       }
-
-      this.novoValorForm.reset();
-      this.novoValorForm.get('valor')?.setValue(0);
-      this.novoValorForm.get('tipo')?.setValue(true);
     });
   }
 
