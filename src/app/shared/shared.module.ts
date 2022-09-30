@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [ ],
@@ -25,7 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CurrencyMaskModule,
     MatRadioModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
   exports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CurrencyMaskModule,
     MatRadioModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
   providers: [],
   entryComponents: []

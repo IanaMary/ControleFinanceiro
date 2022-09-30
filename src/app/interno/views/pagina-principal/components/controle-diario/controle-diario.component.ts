@@ -44,6 +44,11 @@ export class ControleDiarioComponent implements OnInit {
 
   novoValorForm: FormGroup;
 
+  pagContasSaidas = 1;
+  pagContasEntradas = 1;
+  pagOpcoes: number[] = [5, 10, 15, 20];
+  limite = 5;
+
   constructor(
     public dialog: MatDialog,
     private readonly formBuilder: FormBuilder,
@@ -265,9 +270,9 @@ export class ControleDiarioComponent implements OnInit {
 
   atualizarContasEntradas() {
     this.contasEntrada = [];
-    this.paginaPrincipalService.listarContaEntrada(1, 10, this.mesAtual, this.anoAtual).subscribe(
+    this.paginaPrincipalService.listarContaEntrada(this.pagContasEntradas, this.limite, this.mesAtual, this.anoAtual).subscribe(
       (res: any) => {
-        this.contasEntrada = res.rows;
+        this.contasEntrada = res;
       },
       (error: any) => {
         console.log('erro => ', error);
@@ -276,9 +281,9 @@ export class ControleDiarioComponent implements OnInit {
   }
 
   atualizarContasSaidas() {
-    this.paginaPrincipalService.listarContaSaida(1, 10, this.mesAtual, this.anoAtual).subscribe(
+    this.paginaPrincipalService.listarContaSaida(this.pagContasSaidas, this.limite, this.mesAtual, this.anoAtual).subscribe(
       (res: any) => {
-        this.contasSaida = res.rows;
+        this.contasSaida = res;
       },
       (error: any) => {
         console.log('erro => ', error);
@@ -290,5 +295,18 @@ export class ControleDiarioComponent implements OnInit {
   atualizar() {
     this.atualizarContasSaidas();
     this.atualizarContasEntradas();
+  }
+
+
+  paginacao(p: any, bool: boolean) {
+    if(bool) {
+      this.pagContasEntradas = p.pageIndex+1;
+      this.atualizarContasEntradas();
+    }else{
+      this.pagContasSaidas = p.pageIndex+1;
+      this.atualizarContasSaidas();
+    }
+
+
   }
 }

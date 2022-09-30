@@ -1,15 +1,13 @@
 @import "../../../../../../styles/colores.scss";
 @import "../../../../../../styles/styles.scss";
-.box-linha {
+.filtro {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
   align-content: center;
-  justify-content: flex-start;
   width: 100%;
   margin-top: 1rem;
+  justify-content: flex-start;
   .box-filtro {
     display: flex;
     flex-direction: column;
@@ -19,6 +17,19 @@
     // width: 25%;
     margin-right: 0.25rem;
   }
+}
+
+
+
+
+.conteudo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 100%;
+  margin-top: 1rem;
+  justify-content: space-between;
   .box-coluna {
     display: flex;
     flex-direction: column;

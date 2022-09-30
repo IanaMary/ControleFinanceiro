@@ -1,4 +1,4 @@
-<div class="box-linha">
+<div class="filtro">
   <div class="box-filtro">
     <mat-form-field appearance="outline">
       <mat-label>Escolha o mês</mat-label>
@@ -18,7 +18,7 @@
 </div>
 
 
-<div class="box-linha">
+<div class="conteudo">
   <div class="box-coluna">
     <table>
       <tr>
@@ -43,7 +43,7 @@
           </div>
         </th>
       </tr>
-      <tr *ngFor="let p of contasSaida">
+      <tr *ngFor="let p of contasSaida?.rows">
         <td>
           <div class="infos">
             <span>
@@ -64,6 +64,12 @@
         <td> {{p.pago ? (p.valor | number : '1.2-2') : (0 | number : '1.2-2') }}</td>
       </tr>
     </table>
+    <mat-paginator *ngIf="contasSaida?.count >= 5" [length]="contasSaida?.count"
+               [pageSize]="limite"
+               [pageSizeOptions]="pagOpcoes"
+               (page)="paginacao($event, false)"
+               aria-label="Select page">
+    </mat-paginator>
   </div>
   <div class="box-coluna">
     <table>
@@ -84,7 +90,7 @@
           </div>
         </th>
       </tr>
-      <tr *ngFor="let p of contasEntrada">
+      <tr *ngFor="let p of contasEntrada?.rows">
         <td>
           <div class="infos">
             <span>
@@ -103,10 +109,16 @@
         <td> {{(p?.valor | number : '1.2-2') }}</td>
       </tr>
     </table>
+    <mat-paginator *ngIf="contasEntrada?.count >= 5" [length]="contasEntrada?.count"
+               [pageSize]="limite"
+               [pageSizeOptions]="pagOpcoes"
+               (page)="paginacao($event, true)"
+               aria-label="Select page">
+    </mat-paginator>
   </div>
 </div>
 
-<div class="box-linha">
+<div class="conteudo">
   <div class="box-resumo">
     <table>
       <tr>
