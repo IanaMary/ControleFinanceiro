@@ -72,6 +72,8 @@ export class ControleDiarioComponent implements OnInit {
           const obj = {
             valor: result.data.valor,
             nome: result.data.nome,
+            ano: this.anoAtual,
+            mes: this.mesAtual
           };
           this.paginaPrincipalService.salvarContaEntrada(obj).subscribe(
             (res: any) => {
@@ -86,10 +88,12 @@ export class ControleDiarioComponent implements OnInit {
             valor: result.data.valor,
             nome: result.data.nome,
             pago: result.data.pago,
+            ano: this.anoAtual,
+            mes: this.mesAtual
           };
           this.paginaPrincipalService.salvarContaSaida(obj).subscribe(
             (res: any) => {
-              this.atualizarContasEntradas();
+              this.atualizarContasSaidas();
             },
             (error: any) => {
               console.log('erro => ', error);
@@ -260,6 +264,7 @@ export class ControleDiarioComponent implements OnInit {
   }
 
   atualizarContasEntradas() {
+    this.contasEntrada = [];
     this.paginaPrincipalService.listarContaEntrada(1, 10, this.mesAtual, this.anoAtual).subscribe(
       (res: any) => {
         this.contasEntrada = res.rows;
