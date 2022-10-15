@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "227a455a-76e3-4fd7-a293-e6787c94a68c",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:9000/contasResumos",
+    "url": "http://localhost:9000/contasResumos",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-01T16:51:50.776Z",
+    "modified": "2022-10-01T16:51:50.820Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

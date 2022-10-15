@@ -19,9 +19,6 @@
   }
 }
 
-
-
-
 .conteudo {
   display: flex;
   flex-direction: row;
@@ -54,7 +51,7 @@ tr:nth-child(even) {
 }
 
 @media screen and (max-width: 600px) {
-  .box-linha {
+  .conteudo {
     display: flex;
     flex-direction: column;
     width: 100%;

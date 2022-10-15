@@ -9,6 +9,7 @@ export class PaginaPrincipalService {
 
   private readonly endpointContasEntradas: string = 'contasEntradas';
   private readonly endpointContasSaidas: string = 'contasSaidas';
+  private readonly endpointContasResumos: string = 'contasResumos';
   token = localStorage.getItem('authToken');
   obj = {
     access_token: this.token,
@@ -45,10 +46,14 @@ export class PaginaPrincipalService {
   }
 
   editarContaEntrada(id: any, body: any) {
-    return this.http.put(`${this.url}${this.endpointContasEntradas}/${id}`, this.httpOptions);
+    return this.http.put(`${this.url}${this.endpointContasEntradas}/${id}`, body, this.httpOptions);
   }
 
   editarContaSaida(id: any, body: any) {
-    return this.http.put(`${this.url}${this.endpointContasSaidas}/${id}`, this.httpOptions);
+    return this.http.put(`${this.url}${this.endpointContasSaidas}/${id}`, body, this.httpOptions);
+  }
+
+  teste() {
+    return this.http.get(`${this.url}${this.endpointContasResumos}/teste`, this.httpOptions);
   }
 }

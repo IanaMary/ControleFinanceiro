@@ -64,6 +64,14 @@ export class ControleDiarioComponent implements OnInit {
   ngOnInit() {
     this.atualizarContasEntradas();
     this.atualizarContasSaidas();
+    this.paginaPrincipalService.teste().subscribe(
+      (res: any) => {
+        console.log('tttt  => ', res);
+      },
+      (error: any) => {
+        console.log('erro => ', error);
+      }
+    );
   }
 
   adicionarNovoValor(bool: boolean): void {
