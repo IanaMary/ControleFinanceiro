@@ -53,7 +53,7 @@ export class PaginaPrincipalService {
     return this.http.put(`${this.url}${this.endpointContasSaidas}/${id}`, body, this.httpOptions);
   }
 
-  teste() {
-    return this.http.get(`${this.url}${this.endpointContasResumos}/teste`, this.httpOptions);
+  totalResumo(mes : string, ano : number) {
+    return this.http.get(`${this.url}${this.endpointContasSaidas}/totalResumo?mes=${mes}&ano=${ano}`, this.httpOptions);
   }
 }

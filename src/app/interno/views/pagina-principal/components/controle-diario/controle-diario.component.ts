@@ -36,9 +36,9 @@ export class ControleDiarioComponent implements OnInit {
   contasEntrada: any = [];
 
   contasResumo = {
-    pagar: 0,
-    pago: 0,
-    entrada: 0,
+    somaPagar: 0,
+    somaPago: 0,
+    somaEntrada: 0,
     caixa: 0,
   };
 
@@ -64,9 +64,14 @@ export class ControleDiarioComponent implements OnInit {
   ngOnInit() {
     this.atualizarContasEntradas();
     this.atualizarContasSaidas();
-    this.paginaPrincipalService.teste().subscribe(
+    this.contaResumo();
+  }
+
+  contaResumo(){
+    this.paginaPrincipalService.totalResumo(this.mesAtual, this.anoAtual).subscribe(
       (res: any) => {
-        console.log('tttt  => ', res);
+        console.log('res => ', res);
+        this.contasResumo = res;
       },
       (error: any) => {
         console.log('erro => ', error);

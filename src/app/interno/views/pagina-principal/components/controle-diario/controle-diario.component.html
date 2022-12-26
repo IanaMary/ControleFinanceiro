@@ -144,10 +144,12 @@
         </th>
       </tr>
       <tr>
-        <td> {{contasResumo.pagar | number : '1.2-2'}}</td>
-        <td> {{contasResumo.pago | number : '1.2-2'}}</td>
-        <td> {{contasResumo.entrada | number : '1.2-2'}}</td>
-        <td> {{contasResumo.caixa | number : '1.2-2'}}</td>
+        <td> {{contasResumo.somaPagar | number : '1.2-2'}}</td>
+        <td> {{contasResumo.somaPago | number : '1.2-2'}}</td>
+        <td> {{contasResumo.somaEntrada | number : '1.2-2'}}</td>
+        <td [ngStyle]="{'color': (contasResumo.caixa < 0) ? 'red' : 'green'}">
+          {{contasResumo.caixa | number : '1.2-2'}}
+        </td>
       </tr>
     </table>
   </div>
