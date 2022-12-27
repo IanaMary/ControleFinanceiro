@@ -1,125 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PaginaPrincipalService } from '../../services/pagina-principal.service';
 
 @Component({
   selector: 'app-controle-mensal',
   templateUrl: './controle-mensal.component.html',
   styleUrls: ['./controle-mensal.component.scss']
 })
-export class ControleMensalComponent {
+export class ControleMensalComponent implements OnInit {
   title = 'controleFinanceiro';
 
+  anoAtual = new Date().getFullYear();
+  anos = Array(10)
+    .fill(0)
+    .map((e, i) => this.anoAtual + i);
 
-  controleMensal = [
-    {
-      mes: 'JAN',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 1000,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-    {
-      mes: 'FEV',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 10000,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-    {
-      mes: 'MAR',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 100,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-    {
-      mes: 'ABR',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 100,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-    {
-      mes: 'MAI',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 100,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-    {
-      mes: 'JUN',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 100,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-    {
-      mes: 'JUL',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 100,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-    {
-      mes: 'AGO',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 100,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-    {
-      mes: 'SET',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 100,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-    {
-      mes: 'OUT',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 100,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-    {
-      mes: 'NOV',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 100,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-    {
-      mes: 'DEZ',
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 1000,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    }
+  controleMensal: any;
 
-  ]
+  constructor(
+    private readonly paginaPrincipalService: PaginaPrincipalService
+  ) { }
 
+  ngOnInit() {
+    this.atualizar();
+  }
+
+  atualizar() {
+    this.paginaPrincipalService.totalResumoMensal(this.anoAtual).subscribe(
+      (res: any) => {
+        this.controleMensal = res;
+        console.log('res tt => ', res);
+      },
+      (error: any) => {
+        console.log('erro => ', error);
+      }
+    );
+  }
 
 }

@@ -96,6 +96,7 @@ export class ControleDiarioComponent implements OnInit {
           this.paginaPrincipalService.salvarContaEntrada(obj).subscribe(
             (res: any) => {
               this.atualizarContasEntradas();
+              this.contaResumo();
             },
             (error: any) => {
               console.log('erro => ', error);
@@ -112,6 +113,7 @@ export class ControleDiarioComponent implements OnInit {
           this.paginaPrincipalService.salvarContaSaida(obj).subscribe(
             (res: any) => {
               this.atualizarContasSaidas();
+              this.contaResumo();
             },
             (error: any) => {
               console.log('erro => ', error);
@@ -148,6 +150,7 @@ export class ControleDiarioComponent implements OnInit {
           this.paginaPrincipalService.editarContaEntrada(conta.id, obj).subscribe(
             (res: any) => {
               this.atualizarContasEntradas();
+              this.contaResumo();
             },
             (error: any) => {
               console.log('erro => ', error);
@@ -164,6 +167,7 @@ export class ControleDiarioComponent implements OnInit {
           this.paginaPrincipalService.editarContaSaida(conta.id, obj).subscribe(
             (res: any) => {
               this.atualizarContasSaidas();
+              this.contaResumo();
             },
             (error: any) => {
               console.log('erro => ', error);
@@ -192,6 +196,7 @@ export class ControleDiarioComponent implements OnInit {
           this.paginaPrincipalService.excluirEntrada(conta.id).subscribe(
             (res: any) => {
               this.atualizarContasEntradas();
+              this.contaResumo();
             },
             (error: any) => {
               console.log('erro => ', error);
@@ -201,6 +206,7 @@ export class ControleDiarioComponent implements OnInit {
           this.paginaPrincipalService.excluirSaida(conta.id).subscribe(
             (res: any) => {
               this.atualizarContasSaidas();
+              this.contaResumo();
             },
             (error: any) => {
               console.log('erro => ', error);
@@ -238,6 +244,7 @@ export class ControleDiarioComponent implements OnInit {
   atualizar() {
     this.atualizarContasSaidas();
     this.atualizarContasEntradas();
+    this.contaResumo();
   }
 
 

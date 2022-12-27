@@ -1,3 +1,7 @@
 .box {
   padding: 16px;
+  .box-botao {
+    display: flex;
+    justify-content: flex-end;
+  }
 }

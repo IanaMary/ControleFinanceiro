@@ -1,13 +1,33 @@
 @import "../../../../../../styles/colores.scss";
 @import "../../../../../../styles/styles.scss";
+
+
+.filtro {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 100%;
+  margin-top: 1rem;
+  justify-content: flex-start;
+  .box-filtro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    // width: 25%;
+    margin-right: 0.25rem;
+  }
+}
+
 .box-linha {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   align-content: center;
-  justify-content: space-between;
   width: 100%;
   margin-top: 1rem;
   .box-coluna {

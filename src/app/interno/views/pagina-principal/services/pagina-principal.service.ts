@@ -56,4 +56,8 @@ export class PaginaPrincipalService {
   totalResumo(mes : string, ano : number) {
     return this.http.get(`${this.url}${this.endpointContasSaidas}/totalResumo?mes=${mes}&ano=${ano}`, this.httpOptions);
   }
+
+  totalResumoMensal(ano : number) {
+    return this.http.get(`${this.url}${this.endpointContasSaidas}/totalResumoMensal?ano=${ano}`, this.httpOptions);
+  }
 }

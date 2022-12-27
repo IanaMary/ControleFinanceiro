@@ -1,14 +1,25 @@
-<div class="box-linha">
-  <div class="box-coluna" *ngFor="let cont of controleMensal;">
+<div class="filtro">
+  <div class="box-filtro">
+    <mat-form-field appearance="outline">
+      <mat-label>Escolha o ano</mat-label>
+      <mat-select [(ngModel)]="anoAtual" (selectionChange)="atualizar()">
+        <mat-option [value]="ano" *ngFor="let ano of anos">{{ano}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="box-linha" >
+  <div class="box-coluna" *ngFor="let mes of controleMensal;">
     <div class="titulo">
-      {{cont.mes + '/' + cont.ano}}
+      {{mes?.mes + '/' + anoAtual}}
     </div>
     <div class="informacoes">
       <span class="gasto"> Total a Receber:
-        <span class="valor"> {{cont.totalReceber}}</span>
+        <span class="valor"> {{mes.totalEntrada}}</span>
       </span>
-      <span class="gasto"> Total a Pagar:
-        <span class="valor"> {{cont.totalReceber}}</span>
+      <span class="gasto"> Total Gasto:
+        <span class="valor"> {{mes?.totalSaida}}</span>
       </span>
     </div>
   </div>
