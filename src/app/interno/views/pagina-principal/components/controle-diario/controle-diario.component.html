@@ -60,8 +60,8 @@
 
           </div>
         </td>
-        <td> {{!p.pago ? (p.valor | number : '1.2-2') : (0 | number : '1.2-2') }}</td>
-        <td> {{p.pago ? (p.valor | number : '1.2-2') : (0 | number : '1.2-2') }}</td>
+        <td> {{!p.pago ? (p.valor | currency : 'BRL') : (0 | currency : 'BRL') }}</td>
+        <td> {{p.pago ? (p.valor | currency : 'BRL') : (0 | currency : 'BRL') }}</td>
       </tr>
     </table>
     <mat-paginator *ngIf="contasSaida?.count >= 5" [length]="contasSaida?.count"
@@ -106,7 +106,7 @@
             </div>
           </div>
         </td>
-        <td> {{(p?.valor | number : '1.2-2') }}</td>
+        <td> {{(p?.valor | currency : 'BRL') }}</td>
       </tr>
     </table>
     <mat-paginator *ngIf="contasEntrada?.count >= 5" [length]="contasEntrada?.count"
@@ -144,11 +144,11 @@
         </th>
       </tr>
       <tr>
-        <td> {{contasResumo.somaPagar | number : '1.2-2'}}</td>
-        <td> {{contasResumo.somaPago | number : '1.2-2'}}</td>
-        <td> {{contasResumo.somaEntrada | number : '1.2-2'}}</td>
+        <td> {{contasResumo.somaPagar | currency : 'BRL'}}</td>
+        <td> {{contasResumo.somaPago | currency : 'BRL'}}</td>
+        <td> {{contasResumo.somaEntrada | currency : 'BRL'}}</td>
         <td [ngStyle]="{'color': (contasResumo.caixa < 0) ? 'red' : 'green'}">
-          {{contasResumo.caixa | number : '1.2-2'}}
+          {{contasResumo.caixa | currency : 'BRL'}}
         </td>
       </tr>
     </table>

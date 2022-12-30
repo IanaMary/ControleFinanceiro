@@ -10,7 +10,7 @@ export class ControleMensalComponent implements OnInit {
   title = 'controleFinanceiro';
 
   anoAtual = new Date().getFullYear();
-  anos = Array(10)
+  anos = Array(20)
     .fill(0)
     .map((e, i) => this.anoAtual + i);
 
@@ -28,11 +28,8 @@ export class ControleMensalComponent implements OnInit {
     this.paginaPrincipalService.totalResumoMensal(this.anoAtual).subscribe(
       (res: any) => {
         this.controleMensal = res;
-        console.log('res tt => ', res);
       },
-      (error: any) => {
-        console.log('erro => ', error);
-      }
+      (error: any) => {}
     );
   }
 

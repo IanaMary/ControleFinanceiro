@@ -60,4 +60,8 @@ export class PaginaPrincipalService {
   totalResumoMensal(ano : number) {
     return this.http.get(`${this.url}${this.endpointContasSaidas}/totalResumoMensal?ano=${ano}`, this.httpOptions);
   }
+
+  totalResumoAnual(pagina: number, limite: number) {
+    return this.http.get(`${this.url}${this.endpointContasSaidas}/totalResumoAnual?page=${pagina}&limit=${limite}`, this.httpOptions);
+  }
 }

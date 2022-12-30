@@ -67,15 +67,12 @@ export class ControleDiarioComponent implements OnInit {
     this.contaResumo();
   }
 
-  contaResumo(){
+  contaResumo() {
     this.paginaPrincipalService.totalResumo(this.mesAtual, this.anoAtual).subscribe(
       (res: any) => {
-        console.log('res => ', res);
         this.contasResumo = res;
       },
-      (error: any) => {
-        console.log('erro => ', error);
-      }
+      (error: any) => {}
     );
   }
 
@@ -98,9 +95,7 @@ export class ControleDiarioComponent implements OnInit {
               this.atualizarContasEntradas();
               this.contaResumo();
             },
-            (error: any) => {
-              console.log('erro => ', error);
-            }
+            (error: any) => {}
           );
         } else {
           const obj = {
@@ -115,9 +110,7 @@ export class ControleDiarioComponent implements OnInit {
               this.atualizarContasSaidas();
               this.contaResumo();
             },
-            (error: any) => {
-              console.log('erro => ', error);
-            }
+            (error: any) => {}
           );
         }
       }
@@ -152,9 +145,7 @@ export class ControleDiarioComponent implements OnInit {
               this.atualizarContasEntradas();
               this.contaResumo();
             },
-            (error: any) => {
-              console.log('erro => ', error);
-            }
+            (error: any) => { }
           );
         } else {
           const obj = {
@@ -169,9 +160,7 @@ export class ControleDiarioComponent implements OnInit {
               this.atualizarContasSaidas();
               this.contaResumo();
             },
-            (error: any) => {
-              console.log('erro => ', error);
-            }
+            (error: any) => {}
           );
         }
       }
@@ -198,9 +187,7 @@ export class ControleDiarioComponent implements OnInit {
               this.atualizarContasEntradas();
               this.contaResumo();
             },
-            (error: any) => {
-              console.log('erro => ', error);
-            }
+            (error: any) => { }
           );
         } else {
           this.paginaPrincipalService.excluirSaida(conta.id).subscribe(
@@ -208,9 +195,7 @@ export class ControleDiarioComponent implements OnInit {
               this.atualizarContasSaidas();
               this.contaResumo();
             },
-            (error: any) => {
-              console.log('erro => ', error);
-            }
+            (error: any) => {}
           );
         }
       }
@@ -218,14 +203,11 @@ export class ControleDiarioComponent implements OnInit {
   }
 
   atualizarContasEntradas() {
-    this.contasEntrada = [];
     this.paginaPrincipalService.listarContaEntrada(this.pagContasEntradas, this.limite, this.mesAtual, this.anoAtual).subscribe(
       (res: any) => {
         this.contasEntrada = res;
       },
-      (error: any) => {
-        console.log('erro => ', error);
-      }
+      (error: any) => {}
     );
   }
 
@@ -234,9 +216,7 @@ export class ControleDiarioComponent implements OnInit {
       (res: any) => {
         this.contasSaida = res;
       },
-      (error: any) => {
-        console.log('erro => ', error);
-      }
+      (error: any) => {}
     );
   }
 
@@ -249,14 +229,20 @@ export class ControleDiarioComponent implements OnInit {
 
 
   paginacao(p: any, bool: boolean) {
-    if(bool) {
-      this.pagContasEntradas = p.pageIndex+1;
+    if (p.pageSize === this.limite) {
+      if (bool) {
+        this.pagContasEntradas = p.pageIndex + 1;
+        this.atualizarContasEntradas();
+      } else {
+        this.pagContasSaidas = p.pageIndex + 1;
+        this.atualizarContasSaidas();
+      }
+    } else {
+      this.limite = p.pageSize;
+      this.pagContasEntradas = 1;
+      this.pagContasSaidas = 1;
       this.atualizarContasEntradas();
-    }else{
-      this.pagContasSaidas = p.pageIndex+1;
       this.atualizarContasSaidas();
     }
-
-
   }
 }

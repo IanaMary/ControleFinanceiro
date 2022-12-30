@@ -16,10 +16,10 @@
     </div>
     <div class="informacoes">
       <span class="gasto"> Total a Receber:
-        <span class="valor"> {{mes.totalEntrada}}</span>
+        <span class="valor"> {{mes.totalEntrada | currency : 'BRL'}}</span>
       </span>
       <span class="gasto"> Total Gasto:
-        <span class="valor"> {{mes?.totalSaida}}</span>
+        <span class="valor"> {{mes?.totalSaida | currency : 'BRL'}}</span>
       </span>
     </div>
   </div>

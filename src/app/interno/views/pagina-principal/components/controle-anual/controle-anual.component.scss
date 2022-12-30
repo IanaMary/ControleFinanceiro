@@ -4,10 +4,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
   align-content: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   margin-top: 1rem;
   .box-coluna {
@@ -18,6 +17,7 @@
     height: 200px;
     font-weight: 600;
     margin-bottom: 1rem;
+    margin-right: 0.2rem;
     .titulo {
       display: flex;
       justify-content: center;

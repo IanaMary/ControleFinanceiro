@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PaginaPrincipalService } from '../../services/pagina-principal.service';
 
 @Component({
   selector: 'app-controle-anual',
@@ -9,16 +10,35 @@ export class ControleAnualComponent {
   title = 'controleFinanceiro';
 
 
-  controleMensal = [
-    {
-      ano: '2022',
-      receber: [1000, 0],
-      totalReceber: 1000,
-      caixa: 0,
-      pagar: [50, 50, 50],
-      totalPagar: 150,
-    },
-  ]
+  controleMensal: any
+  limite = 5;
+  pagOpcoes: number[] = [5, 10, 15, 20];
+  pagina = 1
+  constructor(
+    private readonly paginaPrincipalService: PaginaPrincipalService
+  ) {}
 
+  ngOnInit() {
+    this.contaResumo();
+  }
+
+  contaResumo(){
+    this.paginaPrincipalService.totalResumoAnual(this.pagina, this.limite).subscribe(
+      (res: any) => {
+        this.controleMensal = res;
+      },
+      (error: any) => { }
+    );
+  }
+
+  paginacao(p: any) {
+    if(p.pageSize != this.limite) {
+      this.limite = p.pageSize;
+      this.pagina = 1;
+    }else{
+      this.pagina = p.pageIndex+1;
+    }
+    this.contaResumo();
+  }
 
 }
